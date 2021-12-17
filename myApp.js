@@ -15,6 +15,7 @@ app.get('/', function(req, res) {
       else {
         response = res.json({message: "Hello world"})
       }
+      res.json(response);
   })
 
 
