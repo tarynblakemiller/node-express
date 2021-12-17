@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
   
   app.get('/json', function(req, res) {
     if(process.env.MESSAGE_STYLE = 'allCaps') {
-      response = res.json({message: "Hello World".toUpperCase()}
+      response = res.json({message: "Hello World".toUpperCase()})
     }
       else {
         response = res.json({message: "Hello world"})
