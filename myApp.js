@@ -9,13 +9,12 @@ app.get('/', function(req, res) {
   });
   
   app.get('/json', function(req, res) {
-    if(process.env.MESSAGE_STYLE == 'allCaps') {
-      response = "Hello World".toUpperCase();
+    if(process.env.MESSAGE_STYLE = 'allCaps') {
+      response = res.json({message: "Hello World".toUpperCase()}
     }
       else {
-        response = "Hello world";
+        response = res.json({message: "Hello world"})
       }
-      res.json(response)
   })
 
 
