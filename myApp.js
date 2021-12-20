@@ -4,8 +4,7 @@ var app = express();
 var env = require("dotenv").config();
 
 app.use("/", function (req, res, next) {
-  var string = req.method + " " + req.path + " - " + req.ip;
-  return console.log(string);
+  return console.log(req.method + " " + req.path + " - " + req.ip);
   next();
 });
 
