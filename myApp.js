@@ -3,8 +3,8 @@ const req = require("express/lib/request");
 var app = express();
 var env = require("dotenv").config();
 
-app.use("/", function (req, res, next) {
-  return console.log(req.method + " " + req.path + " - " + req.ip);
+app.use(function (req, res, next) {
+  console.log(req.method + " " + req.path + " - " + req.ip);
   next();
 });
 
