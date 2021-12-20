@@ -9,10 +9,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(function (req, res, next) {
-  bodyParser.urlencoded({ extended: false });
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 app.use("/public", express.static(__dirname + "/public"));
 
