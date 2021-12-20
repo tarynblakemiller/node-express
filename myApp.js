@@ -34,6 +34,14 @@ app.get("/name", (req, res) => {
   });
 });
 
+app.post("/name", (req, res) => {
+  var firstName = req.body.first;
+  var lastName = req.body.last;
+  res.json({
+    name: `${firstName} ${lastName}`,
+  });
+});
+
 app.get(
   "/now",
   (req, res, next) => {
