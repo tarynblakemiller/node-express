@@ -2,10 +2,22 @@ var express = require("express");
 const req = require("express/lib/request");
 var app = express();
 var env = require("dotenv").config();
+var bodyParser = require("body-parser");
 
 app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
+});
+
+app.use(function (req, res, next) {
+  bodyParser.urlencoded({ extended: false });
+  next();
+});
+
+app.use("/public", express.static(__dirname + "/public"));
+
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/:word/echo", (req, res) => {
@@ -23,8 +35,6 @@ app.get("/name", (req, res) => {
   });
 });
 
-app.use("/public", express.static(__dirname + "/public"));
-
 app.get(
   "/now",
   (req, res, next) => {
@@ -35,10 +45,6 @@ app.get(
     res.send({ time: req.time });
   }
 );
-
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/views/index.html");
-});
 
 app.get("/json", (req, res) => {
   if (process.env.MESSAGE_STYLE === "uppercase") {
