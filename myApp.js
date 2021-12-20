@@ -8,6 +8,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get("/:word/echo", (req, res) => {
+  const { word } = req.params;
+  res.json({
+    echo: word,
+  });
+});
+
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get(
